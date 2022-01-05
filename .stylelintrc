@@ -1,0 +1,22 @@
+{
+  "extends": ["stylelint-config-recommended-scss", "stylelint-config-prettier"],
+  "plugins": ["@namics/stylelint-bem", "stylelint-order"],
+  "rules": {
+    "plugin/stylelint-bem-namics": {
+      "patternPrefixes": [],
+      "helperPrefixes": []
+    },
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignoreTypes": ["/^app-/", "/^mat-/"]
+      }
+    ],
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": ["ng-deep"]
+      }
+    ]
+  }
+}
