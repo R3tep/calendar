@@ -1,14 +1,34 @@
-import { TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { HeaderModule } from './shared/components';
+import { GeneralStateFacade } from './store/general-state';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
   beforeEach(
     waitForAsync(() =>
       TestBed.configureTestingModule({
         declarations: [AppComponent],
+        imports: [RouterTestingModule, HeaderModule],
+        providers: [
+          {
+            provide: GeneralStateFacade,
+            useValue: {
+              setCurrentDate: () => {},
+            },
+          },
+        ],
       }).compileComponents()
     )
   );
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+  });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -22,10 +42,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('calendar');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it('should trigger setCurrentDate call facade method', () => {
+    const setCurrentDateFacade = spyOn(TestBed.inject(GeneralStateFacade), 'setCurrentDate');
+    component.setCurrentDate(new Date('11-11-2011'));
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Calendar');
+    expect(setCurrentDateFacade).toHaveBeenCalledWith(new Date('11-11-2011'));
   });
 });

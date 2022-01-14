@@ -1,0 +1,5 @@
+<section>
+  <h5 class="weekly__title" [ngClass]="{ 'weekly__title--selected': day.getDay() === current.getDay() + 1 }">
+    {{ day | date: 'dd' }}
+  </h5>
+</section>

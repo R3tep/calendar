@@ -1,0 +1,10 @@
+<h1>{{ current | date: 'LLLL YYYY' }}</h1>
+
+<label for="changedate">Change current date </label>
+<input
+  #date
+  (input)="setCurrentDate(date.value)"
+  id="changedate"
+  type="date"
+  value="{{ current | date: 'yyyy-MM-dd' }}"
+/>

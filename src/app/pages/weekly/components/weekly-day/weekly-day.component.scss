@@ -1,0 +1,10 @@
+.weekly {
+  &__title {
+    text-align: center;
+    padding: 5px;
+    &--selected {
+      border: 2px gray solid;
+      border-radius: 100%;
+    }
+  }
+}
