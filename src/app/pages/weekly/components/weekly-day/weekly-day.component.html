@@ -2,4 +2,15 @@
   <h5 class="weekly__title" [ngClass]="{ 'weekly__title--selected': day.getDay() === current.getDay() + 1 }">
     {{ day | date: 'dd' }}
   </h5>
+
+  <ul>
+    <li class="weekly__hour" *ngFor="let hour of hours">
+      <h6 class="weekly__hour__title">{{ hour | number: '2.0' }}:00</h6>
+      <app-event
+        [events]="events[hour]"
+        (sendAddEvent)="addEvent(hour)"
+        (sendManageEvent)="manageEvent($event, hour)"
+      ></app-event>
+    </li>
+  </ul>
 </section>

@@ -3,4 +3,11 @@
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-evenly;
+
+  &__day {
+    width: 13%;
+    padding: 15px;
+    border-right: 1px gray solid;
+    margin-top: 10px;
+  }
 }

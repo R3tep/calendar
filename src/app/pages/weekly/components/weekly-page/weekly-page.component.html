@@ -1,3 +1,8 @@
 <div class="weekly">
-  <app-weekly-day *ngFor="let day of days" [day]="day" [current]="current"></app-weekly-day>
+  <app-weekly-day
+    class="weekly__day"
+    *ngFor="let day of days"
+    [day]="day"
+    [current]="current"
+  ></app-weekly-day>
 </div>

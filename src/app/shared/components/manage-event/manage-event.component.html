@@ -1,0 +1,17 @@
+<section class="modal manage-event">
+  <div class="modal__center--vertically manage-event__container">
+    <h3 class="manage-event__title">Manage event <button (click)="closeModal()">Close</button></h3>
+
+    <form [formGroup]="eventForm" (submit)="saveEvent()">
+      <div class="manage-event__input">
+        <label class="manage-event__input__label" for="title">Title</label>
+        <input id="title" formControlName="title" type="text" />
+      </div>
+      <div class="manage-event__input">
+        <label class="manage-event__input__label" for="description"> Description </label>
+        <input id="description" formControlName="description" type="text" />
+      </div>
+      <div class="manage-event__input"><input type="submit" value="Save" /></div>
+    </form>
+  </div>
+</section>

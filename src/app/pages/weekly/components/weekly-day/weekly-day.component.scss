@@ -2,9 +2,20 @@
   &__title {
     text-align: center;
     padding: 5px;
+    margin: 0;
+    border-bottom: 1px white solid;
     &--selected {
-      border: 2px gray solid;
-      border-radius: 100%;
+      border-bottom: 1px gray solid;
+    }
+  }
+
+  &__hour {
+    color: gray;
+    margin: 10px 0;
+    border-bottom: 1px #bbb solid;
+    &__title {
+      margin: 0 0 8px 0;
+      font-size: 14px;
     }
   }
 }

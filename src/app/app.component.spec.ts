@@ -1,7 +1,9 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './shared/components';
+import { EventsFacade } from './store/events';
 import { GeneralStateFacade } from './store/general-state';
 
 describe('AppComponent', () => {
@@ -18,6 +20,13 @@ describe('AppComponent', () => {
             provide: GeneralStateFacade,
             useValue: {
               setCurrentDate: () => {},
+            },
+          },
+          {
+            provide: EventsFacade,
+            useValue: {
+              selectSelectedEvent$: of({ index: 1 }),
+              selectEventByDateAndIndex$: of({ title: '', description: '' }),
             },
           },
         ],

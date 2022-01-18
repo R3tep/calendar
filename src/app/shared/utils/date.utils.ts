@@ -3,3 +3,5 @@ export const firstWeekDayByDate = (d: Date) => {
   const first = frStartDayWeek.getDate() - frStartDayWeek.getDay() + 1;
   return new Date(frStartDayWeek.setDate(first));
 };
+
+export const dateToStringKey = (d: Date) => `${d.getMonth() + 1}-${d.getDate()}-${d.getFullYear()}`;

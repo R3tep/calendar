@@ -6,3 +6,11 @@
 <main>
   <router-outlet></router-outlet>
 </main>
+
+<app-manage-event
+  *ngIf="eventsFacade.selectShowManageEvent$ | async"
+  (sendCloseModal)="closeManageEvent()"
+  (sendSaveEvent)="saveEvent($event)"
+  [selectedEvent]="currentSelectedEvent"
+  [eventValues]="eventValues"
+></app-manage-event>

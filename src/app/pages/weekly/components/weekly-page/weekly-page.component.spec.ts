@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { EventModule } from '@app/shared/components';
+import { EventsFacade } from '@app/store/events';
 import { GeneralStateFacade } from '@app/store/general-state';
 import { of } from 'rxjs';
 import { WeeklyDayComponent } from '..';
@@ -13,11 +15,18 @@ describe('WeeklyPageComponent', () => {
     waitForAsync(() => {
       return TestBed.configureTestingModule({
         declarations: [WeeklyPageComponent, WeeklyDayComponent],
+        imports: [EventModule],
         providers: [
           {
             provide: GeneralStateFacade,
             useValue: {
               selectCurrentDate$: of(new Date('11-11-2011')),
+            },
+          },
+          {
+            provide: EventsFacade,
+            useValue: {
+              selectEventsByDate$: () => of(null),
             },
           },
         ],

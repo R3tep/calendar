@@ -1,0 +1,22 @@
+<div class="event" [ngClass]="{ 'event--green': events?.length }">
+  <span>{{ events?.length || 0 }}</span>
+  {{ events?.length || 0 | i18nPlural: { '=0': 'No event', '=1': 'Event', other: 'Events' } }}
+  <button class="event__button" (click)="addEvent()">+</button>
+  <button
+    class="event__button event__toggle"
+    [ngClass]="{ 'event__toggle--open': showEvents }"
+    (click)="toggleDisplayEvent()"
+  >
+    >
+  </button>
+</div>
+<ng-container *ngIf="showEvents">
+  <div
+    (click)="manageEvent(event.index)"
+    (keypress)="manageEvent(event.index)"
+    class="event__text"
+    *ngFor="let event of events"
+  >
+    {{ event.title }}
+  </div>
+</ng-container>
